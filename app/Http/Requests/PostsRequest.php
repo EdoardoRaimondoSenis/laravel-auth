@@ -26,7 +26,6 @@ class PostsRequest extends FormRequest
             'argument' => 'required|string',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after_or_equal:start_date',
-            'number_of_posts' => 'required|integer|min:1',
             'collaborators' => 'nullable|string',
         ];
     }

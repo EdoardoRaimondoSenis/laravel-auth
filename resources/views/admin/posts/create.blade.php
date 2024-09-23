@@ -3,29 +3,49 @@
 @section('content')
     <div class="container mt-3">
         <h1>Crea un nuovo post</h1>
-    <form action="{{ route('admin.posts.store') }}" method="post">
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+    <form action="{{ route('admin.posts.store') }}" method="POST">
         @csrf
-        <div class="mb-3">
-            <label for="title" class="form-label">Titolo</label>
-            <input type="text" class="form-control" id="title" name="title">
-        </div>
-        <div class="mb-3">
-            <label for="start_date" class="form-label">Data di Inizio</label>
-            <input type="text" class="form-control" id="start_date" name="start_date">
-        </div>
-        <div class="mb-3">
-            <label for="end_date" class="form-label">Data di Fine</label>
-            <input type="text" class="form-control" id="end_date" name="end_date">
-        </div>
-        <div class="mb-3">
-            <label for="collaborators" class="form-label">Collaboratori</label>
-            <input type="text" class="form-control" id="collaborators" name="collaborators">
-        </div>
-        <div class="mb-3">
-            <label for="argument" class="form-label">Contenuto</label>
-            <textarea class="form-control" name="argument" id="argument" cols="30" rows="10"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Salva</button>
+        <label class="form-label" for="title">Titolo</label>
+        <input class="form-control" type="text" name="title" id="title" value="{{ old('title') }}" required>
+        @error('title')
+            <div class="alert alert-danger error">{{ $message }}</div>
+        @enderror
+    
+        <label class="form-label" for="start_date">Data di inizio</label>
+        <input class="form-control" type="date" name="start_date" id="start_date" value="{{ old('start_date') }}" required>
+        @error('start_date')
+            <div class="alert alert-danger error">{{ $message }}</div>
+        @enderror
+    
+        <label class="form-label" for="end_date">Data di fine</label>
+        <input class="form-control" type="date" name="end_date" id="end_date" value="{{ old('end_date') }}" required>
+        @error('end_date')
+            <div class="alert alert-danger error">{{ $message }}</div>
+        @enderror
+    
+        <label class="form-label" for="collaborators">Collaboratori:</label>
+        <input class="form-control" type="text" name="collaborators" id="collaborators" value="{{ old('collaborators') }}">
+        @error('collaborators')
+            <div class="alert alert-danger error">{{ $message }}</div>
+        @enderror
+
+        <label class="formlabel" for="argument">Argomento</label>
+        <textarea cols="30" rows="6" class="form-control" name="argument" id="argument" required>{{ old('argument') }}</textarea>
+        @error('argument')
+            <div class="alert alert-danger error">{{ $message }}</div>
+        @enderror
+
+        <button type="submit" class="btn btn-primary mt-3">Salva</button>
     </form>
     </div>
 @endsection

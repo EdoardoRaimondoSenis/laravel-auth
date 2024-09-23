@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Http\Requests\PostsRequest;
 
 class PostController extends Controller
 {
@@ -28,9 +29,12 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PostsRequest $request)
     {
-        //
+        $data = $request->all();
+
+        Post::create($data);
+        return redirect()->route('admin.posts.index');
     }
 
     /**

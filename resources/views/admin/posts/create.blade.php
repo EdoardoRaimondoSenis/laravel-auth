@@ -16,31 +16,31 @@
     <form action="{{ route('admin.posts.store') }}" method="POST">
         @csrf
         <label class="form-label" for="title">Titolo</label>
-        <input class="form-control" type="text" name="title" id="title" value="{{ old('title') }}" required>
+        <input class="form-control" type="text" name="title" id="title" required>
         @error('title')
             <div class="alert alert-danger error">{{ $message }}</div>
         @enderror
     
         <label class="form-label" for="start_date">Data di inizio</label>
-        <input class="form-control" type="date" name="start_date" id="start_date" value="{{ old('start_date') }}" required>
+        <input class="form-control" type="date" name="start_date" id="start_date" required>
         @error('start_date')
             <div class="alert alert-danger error">{{ $message }}</div>
         @enderror
     
         <label class="form-label" for="end_date">Data di fine</label>
-        <input class="form-control" type="date" name="end_date" id="end_date" value="{{ old('end_date') }}" required>
+        <input class="form-control" type="date" name="end_date" id="end_date" required>
         @error('end_date')
             <div class="alert alert-danger error">{{ $message }}</div>
         @enderror
     
         <label class="form-label" for="collaborators">Collaboratori:</label>
-        <input class="form-control" type="text" name="collaborators" id="collaborators" value="{{ old('collaborators') }}">
+        <input class="form-control" type="text" name="collaborators" id="collaborators">
         @error('collaborators')
             <div class="alert alert-danger error">{{ $message }}</div>
         @enderror
 
         <label class="formlabel" for="argument">Argomento</label>
-        <textarea cols="30" rows="6" class="form-control" name="argument" id="argument" required>{{ old('argument') }}</textarea>
+        <textarea cols="30" rows="6" class="form-control" name="argument" id="argument" required></textarea>
         @error('argument')
             <div class="alert alert-danger error">{{ $message }}</div>
         @enderror

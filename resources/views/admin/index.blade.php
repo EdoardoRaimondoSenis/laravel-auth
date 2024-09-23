@@ -14,7 +14,6 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item"><a href="{{ route('admin.posts.index') }}">Lista</a></li>
             <li class="list-group-item"><a href="{{ route('admin.posts.create') }}">Crea</a></li>
-            <li class="list-group-item"><a href="">Modifica</a></li>
         </ul>
     </body>
     </html>

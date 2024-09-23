@@ -33,24 +33,24 @@ class PostController extends Controller
     {
         $data = $request->all();
 
-        Post::create($data);
-        return redirect()->route('admin.posts.index');
+        $post = Post::create($data);
+        return redirect()->route('admin.posts.show', $post);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Post $post)
     {
-        //
+        return view('admin.posts.show', compact('post'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**

@@ -2,6 +2,10 @@
 
 @section('content')
     <div class="container">
+        @if (session('message'))
+            <div class="alert alert-success">{{ session('message') }}</div>
+        @endif
+            
         <h1>Dettagli Post</h1>
         <ul>
             <li>Titolo {{ $post->title }}</li>

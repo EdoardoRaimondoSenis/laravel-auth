@@ -5,9 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+
+class Category extends Model
 {
     use HasFactory;
-
-    protected $fillable = ['title', 'argument', 'start_date', 'end_date', 'collaborators', 'path_image', 'image_name'];
 }

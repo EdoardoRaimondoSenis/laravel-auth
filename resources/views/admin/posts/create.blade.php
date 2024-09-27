@@ -13,7 +13,7 @@
                 </ul>
             </div>
         @endif
-    <form action="{{ route('admin.posts.store') }}" method="POST">
+    <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <label class="form-label" for="title">Titolo</label>
         <input class="form-control" type="text" name="title" id="title" required>
@@ -42,6 +42,12 @@
         <label class="formlabel" for="argument">Argomento</label>
         <textarea cols="30" rows="6" class="form-control" name="argument" id="argument" required></textarea>
         @error('argument')
+            <div class="alert alert-danger error">{{ $message }}</div>
+        @enderror
+
+        <label class="form-label" for="path_image">Immagine:</label>
+        <input class="form-control" type="file" name="path_image" id="path_image">
+        @error('collaborators')
             <div class="alert alert-danger error">{{ $message }}</div>
         @enderror
 

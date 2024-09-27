@@ -19,7 +19,6 @@ class PostTableSeeder extends Seeder
             $newPost->argument = $faker->paragraph(5);
             $newPost->start_date = $faker->date();
             $newPost->end_date = $faker->date();
-            $newPost->number_of_posts = $faker->numberBetween(1, 100);
             $newPost->collaborators = $faker->name();
             $newPost->save();
         }

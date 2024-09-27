@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Http\Requests\PostsRequest;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -32,8 +33,16 @@ class PostController extends Controller
     public function store(PostsRequest $request)
     {
         $data = $request->all();
-
+        if(array_key_exists('path_image', $data)) {
+            
+            $img_path = Storage::put('uploads', $data['path_image']);
+            $image_name = $request->file('path_image')->getClientOriginalName();
+            $data['path_image'] = $img_path;
+            $data['image_name'] = $image_name;
+        }
+        
         $post = Post::create($data);
+
         return redirect()->route('admin.posts.show', $post);
     }
 
@@ -69,6 +78,9 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+
+        return redirect()->route('admin.posts.index')->with('delete', 'il post ' . $post->title . ' è stato eliminato');
     }
 }
